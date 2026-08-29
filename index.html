@@ -64,13 +64,26 @@
     padding: 60px 24px 40px;
     overflow:hidden;
   }
+  /* keep a subtle tinted overlay, watermark image is added as a separate element */
   .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background: url('images/couple-1.jpeg') center/cover;
+    background: rgba(6,40,32,0.14);
+    pointer-events:none;
+    z-index:0;
+  }
+  /* Watermark image placed inside the hero and positioned behind the content */
+  .hero .watermark{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
     opacity:.08;
     pointer-events:none;
+    z-index:0;
+    filter: saturate(.98) contrast(.95);
   }
   .hero .ornament{
     position:absolute;
@@ -79,8 +92,8 @@
   }
   .hero .ornament.tl{ top:18px; left:18px; width:140px; transform:rotate(0deg);}
   .hero .ornament.br{ bottom:18px; right:18px; width:140px; transform:rotate(180deg);}
-  .hero .ornament.tr{ top:18px; right:18px; width:140px; transform:scaleX(-1);}
-  .hero .ornament.bl{ bottom:18px; left:18px; width:140px; transform:scaleX(-1) rotate(180deg);}
+  .hero .ornament.tr{ top:18px; right:18px; width:140px; transform:scaleX(-1);} 
+  .hero .ornament.bl{ bottom:18px; left:18px; width:140px; transform:scaleX(-1) rotate(180deg);} 
 
   .hero-eyebrow{
     color: var(--gold-soft);
@@ -212,12 +225,12 @@
   .scroll-cue .line{ width:1px; height:26px; background: rgba(250,246,236,.4); animation: pulse 2s ease-in-out infinite;}
 
   @keyframes riseIn{
-    from{ opacity:0; transform: translateY(14px);}
-    to{ opacity:1; transform: translateY(0);}
+    from{ opacity:0; transform: translateY(14px);} 
+    to{ opacity:1; transform: translateY(0);} 
   }
   @keyframes pulse{
-    0%,100%{ transform: scaleY(1); opacity:.4;}
-    50%{ transform: scaleY(1.4); opacity:.9;}
+    0%,100%{ transform: scaleY(1); opacity:.4;} 
+    50%{ transform: scaleY(1.4); opacity:.9;} 
   }
 
   /* ---------- SECTION SHARED ---------- */
@@ -239,10 +252,10 @@
   }
 
   .reveal{ opacity:0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease;}
-  .reveal.in{ opacity:1; transform: translateY(0);}
+  .reveal.in{ opacity:1; transform: translateY(0);} 
 
   /* ---------- STORY ---------- */
-  .story{ background: var(--ivory);}
+  .story{ background: var(--ivory);} 
   .story-grid{
     display:grid;
     grid-template-columns: 1fr 1.1fr;
@@ -261,8 +274,8 @@
     object-fit:cover;
     border-radius: 2px;
   }
-  .story-photos .p1{ aspect-ratio: 3/4; margin-top: 44px; border: 1px solid var(--gold-soft); padding: 10px; background:var(--white);}
-  .story-photos .p2{ aspect-ratio: 3/4; border: 1px solid var(--gold-soft); padding: 10px; background:var(--white);}
+  .story-photos .p1{ aspect-ratio: 3/4; margin-top: 44px; border: 1px solid var(--gold-soft); padding: 10px; background:var(--white);} 
+  .story-photos .p2{ aspect-ratio: 3/4; border: 1px solid var(--gold-soft); padding: 10px; background:var(--white);} 
   .story-photos .p1 img, .story-photos .p2 img{ height:100%; }
 
   .story-copy .eyebrow{ color: var(--gold); }
@@ -295,9 +308,9 @@
   }
 
   /* ---------- GALLERY ---------- */
-  .gallery{ background: var(--emerald); color: var(--ivory);}
-  .gallery .section-head h2{ color: var(--ivory);}
-  .gallery .eyebrow{ color: var(--gold-soft);}
+  .gallery{ background: var(--emerald); color: var(--ivory);} 
+  .gallery .section-head h2{ color: var(--ivory);} 
+  .gallery .eyebrow{ color: var(--gold-soft);} 
   .gallery-row{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
@@ -317,7 +330,7 @@
   }
 
   /* ---------- EVENTS ---------- */
-  .events{ background: var(--ivory-dim);}
+  .events{ background: var(--ivory-dim);} 
   .events-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
@@ -367,7 +380,7 @@
   }
 
   /* ---------- COLOURS ---------- */
-  .colours{ background: var(--ivory); text-align:center;}
+  .colours{ background: var(--ivory); text-align:center;} 
   .swatches{
     display:flex;
     justify-content:center;
@@ -387,10 +400,10 @@
     font-size: 16px;
     color: var(--charcoal);
   }
-  .dot.teal{ background: var(--teal);}
-  .dot.white{ background: var(--white);}
-  .dot.pink{ background: var(--pink);}
-  .dot.burgundy{ background: var(--burgundy);}
+  .dot.teal{ background: var(--teal);} 
+  .dot.white{ background: var(--white);} 
+  .dot.pink{ background: var(--pink);} 
+  .dot.burgundy{ background: var(--burgundy);} 
 
   /* ---------- TOAST ---------- */
   .toast{
@@ -428,7 +441,7 @@
   }
 
   /* ---------- RSVP ---------- */
-  .rsvp{ background: var(--ivory); text-align:center;}
+  .rsvp{ background: var(--ivory); text-align:center;} 
   .rsvp-numbers{
     display:flex;
     justify-content:center;
@@ -462,7 +475,7 @@
   }
   footer .monogram-sm{ width:52px; margin:0 auto 18px; opacity:.9;}
   footer .fam{ font-family: var(--serif); font-style:italic; font-size:16px; color: var(--gold-soft); margin-bottom: 6px;}
-  footer .fine{ font-size: 12px; letter-spacing:.1em; margin-top: 18px; color: rgba(250,246,236,.4);}
+  footer .fine{ font-size: 12px; letter-spacing:.1em; margin-top: 18px; color: rgba(250,246,236,.4);} 
 
   @media (max-width: 860px){
     .story-grid{ grid-template-columns: 1fr; }
@@ -480,6 +493,9 @@
 
 <!-- HERO -->
 <section class="hero">
+  <!-- Watermark image positioned behind the hero content -->
+  <img class="watermark" src="images/couple-1.jpeg" alt="" aria-hidden="true">
+
   <svg class="ornament tl" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M4 4 C 30 4, 4 30, 4 4" stroke="#c9a227" stroke-width="1"/>
     <path d="M4 4 Q 60 8 70 60" stroke="#c9a227" stroke-width="1" fill="none"/>
